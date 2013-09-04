@@ -15,11 +15,15 @@ This library is a work in progress; there are many API endpoints that are unacco
 Installation
 ---
 
-For now, installation is manual:
+Clone it then install:
 
 ```
-git clone https://github.com/ClassOwl/openclass-python-api.git
+> git clone https://github.com/ClassOwl/openclass-python-api.git
+> cd openclass-python-api
+> python setup.py install
 ```
+
+et voila!
 
 Basic Example
 ---
