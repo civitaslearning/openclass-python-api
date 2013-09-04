@@ -8,7 +8,7 @@ setup(
     author_email='anson@tophatmonocle.com',
     url='https://github.com/ClassOwl/openclass-python-api',
     packages=find_packages(),
-    install_requires=['requests'],
+    install_requires=['json', 'requests', 'urllib'],
     license='MIT License',
     keywords='openclass',
     zip_safe=True,
