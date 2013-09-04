@@ -1,5 +1,5 @@
 python manage.py shell
-from classowl.scripts.apps.openclass import OpenClassIntegration, CLASSOWL_SCHOOL, MATH51, MATH53
+from openclass.cache import OpenClassIntegration, CLASSOWL_SCHOOL, MATH51, MATH53
 oc = OpenClassIntegration(debug = True)
 
 # Create course

@@ -1,4 +1,4 @@
-from pearson.api import OpenClassAPI
+from openclass.api import OpenClassAPI
 
 class OpenClass(OpenClassAPI):
 	"""

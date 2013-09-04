@@ -1,12 +1,9 @@
 from django.core.cache import cache
-from pearson.openclass import OpenClass, OpenClassAPI
+
+from openclass.api  import OpenClassAPI
+from openclass.core import OpenClass
 
 from settings import OPENCLASS_ADMIN_EMAIL, OPENCLASS_ADMIN_PASSWORD, OPENCLASS_API_KEY
-
-CLASSOWL_SCHOOL = '519fd48aa2a3850985842df2'
-MATH51          = '5204cbb900c4ebae2f271af4'
-MATH53          = '5204ce3c5ee58b977a6b0016'
-SAM_SIS_ID      = 'a0s3869tjioafsdaj98'
 
 # Inherits from OpenClass but adds ClassOwl specific caching.
 # OMG I LOVE THIS!!! iz so eeee zzzz

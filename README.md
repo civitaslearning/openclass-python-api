@@ -3,14 +3,18 @@ Pearson OpenClass Python API
 
 Author
 ---
-* Sam Purtill [https://github.com/sampurtill]
+* Sam Purtill (sam@classowl.com): [https://github.com/sampurtill]
 
 Purpose
 ----
-* Makes working with the OpenClass API dreamy
+* Makes working with the OpenClass API nice and simple
 * Creates and maintains a connection with the OpenClass API
 * Supports GET, POST, PUT, and DELETE requests (aka any request you would ever make to the OpenClass API)
 * Allows for subclassing, i.e. if one wanted to cache the authentication tokens in memory 
+
+Quick Note on Development
+---
+This library is a work in progress; there are many API endpoints that are unaccounted for in the OpenClass class within core.py. If you want to speed it up, go ahead and fork it and make a pull request! As you'll see, it's easy to add new API endpoints.
 
 Installation
 ---
