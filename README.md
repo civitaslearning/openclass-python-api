@@ -17,7 +17,9 @@ Installation
 
 For now, installation is manual:
 
-> git clone git://github.com/sampurtill/openclass-python.git
+```
+git clone https://github.com/ClassOwl/openclass-python-api.git
+```
 
 Basic Example
 ---
