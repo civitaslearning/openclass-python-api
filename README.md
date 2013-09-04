@@ -1,10 +1,6 @@
 Pearson OpenClass API Python Library
 ===
 
-Author
----
-* Sam Purtill (sam@classowl.com): [https://github.com/sampurtill]
-
 Purpose
 ----
 * Makes working with the OpenClass API nice and simple
