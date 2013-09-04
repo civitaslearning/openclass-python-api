@@ -6,7 +6,7 @@ Purpose
 * Makes working with the OpenClass API nice and simple
 * Creates and maintains a connection with the OpenClass API
 * Supports GET, POST, PUT, and DELETE requests (aka any request you would ever make to the OpenClass API)
-* Allows for subclassing, i.e. if one wanted to cache the authentication tokens in memory 
+* Allows for subclassing, i.e. if one wanted to cache the authentication tokens in memory. An example of this in cache.py.example (OpenClassIntegration).
 
 Quick Note on Development
 ---
