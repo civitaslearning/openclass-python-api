@@ -43,9 +43,9 @@ class OpenClassAPI(object):
         admin_email,
         admin_pw,
         api_key,
-        auth_token       = None,
+        auth_token    = None,
         refresh_token = None,
-        debug           = False
+        debug         = False
     ):
         self.api_key = api_key
         self.debug   = debug
@@ -98,7 +98,7 @@ class OpenClassAPI(object):
         payload = {'email': admin_email, 'password': admin_pw}
         headers = {'content-type': 'application/x-www-form-urlencoded'}
 
-        r            = requests.post(url, data = payload, headers = headers)
+        r           = requests.post(url, data = payload, headers = headers)
         status_code = r.status_code
 
         # http status code != 200? raise an error!
@@ -168,13 +168,13 @@ class OpenClassAPI(object):
         payload.update(api_key)
 
         if request_type == 'POST':
-            r = requests.post(url,  headers = headers, params = payload, data = json.dumps(data))
+            r = requests.post(url,   headers = headers, params = payload, data = json.dumps(data))
         elif request_type == 'PUT':
-            r = requests.put(url,   headers = headers, params = payload, data = json.dumps(data))
+            r = requests.put(url,    headers = headers, params = payload, data = json.dumps(data))
         elif request_type == 'DELETE':
             r = requests.delete(url, headers = headers, params = payload)
         else:
-            r = requests.get(url,   headers = headers, params = payload)
+            r = requests.get(url,    headers = headers, params = payload)
 
         if self.debug:
             print 'Requested URL: {}&token={}'.format(r.url, urllib.quote_plus(self.auth_token))
