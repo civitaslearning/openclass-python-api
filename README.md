@@ -1,4 +1,4 @@
-Pearson OpenClass Python API
+Pearson OpenClass API Python Library
 ===
 
 Author
