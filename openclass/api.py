@@ -51,14 +51,13 @@ class OpenClassAPI(object):
         self.debug   = debug
 
         if auth_token and refresh_token:
-            if self.debug:
-                print 'Auth tokens passed in at instantiation'
+            if self.debug: print 'Auth tokens passed in at instantiation'
 
             self.auth_token    = auth_token
             self.refresh_token = refresh_token
         else:
-            if self.debug:
-                print 'Getting auth tokens at instantiation'
+            if self.debug: print 'Getting auth tokens at instantiation'
+
             self.set_auth_tokens(admin_email, admin_pw)
         
         if self.debug:
@@ -117,8 +116,7 @@ class OpenClassAPI(object):
     def refresh_auth_tokens(self):
         tokens = self.get_refreshed_auth_tokens()
         
-        if self.debug:
-            print 'Auth tokens: {}'.format(tokens)
+        if self.debug: print 'Auth tokens: {}'.format(tokens)
 
         self.auth_token    = tokens['auth_token']
         self.refresh_token = tokens['refresh_token']
