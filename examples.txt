@@ -1,0 +1,44 @@
+python manage.py shell
+from classowl.scripts.apps.openclass import OpenClassIntegration, CLASSOWL_SCHOOL, MATH51, MATH53
+oc = OpenClassIntegration(debug = True)
+
+# Create course
+
+math41_data = {
+	'institutionId': CLASSOWL_SCHOOL,
+	'courseTitle': 'Math 41: Linear Algebra',
+	'courseCode': 'MATH41',
+	'description': 'Difficult equations, naturally',
+	'credits': 4
+}
+
+r = oc.create_course(math41_data)
+math41_id = r['data']['id']
+
+# Read course we just created
+
+math41 = oc.get_course(math41_id)
+math41
+
+# Update course details
+
+updated_math41 = {
+	'id': math41_id,
+	'institutionId': CLASSOWL_SCHOOL,
+	'courseTitle': 'Math 41: Calculus',
+	'courseCode': 'MATH41',
+	'description': 'hehehehehe',
+	'credits': 5
+}
+
+r = oc.update_course(math41_id, updated_math41)
+
+# Ensure course updated properly
+
+math41 = oc.get_course(math41_id)
+math41
+
+# Delete course
+
+r = oc.delete_course(math41_id)
+r
