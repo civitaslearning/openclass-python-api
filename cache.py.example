@@ -1,0 +1,50 @@
+from django.core.cache import cache
+from pearson.openclass import OpenClass, OpenClassAPI
+
+from settings import OPENCLASS_ADMIN_EMAIL, OPENCLASS_ADMIN_PASSWORD, OPENCLASS_API_KEY
+
+CLASSOWL_SCHOOL = '519fd48aa2a3850985842df2'
+MATH51          = '5204cbb900c4ebae2f271af4'
+MATH53          = '5204ce3c5ee58b977a6b0016'
+SAM_SIS_ID      = 'a0s3869tjioafsdaj98'
+
+# Inherits from OpenClass but adds ClassOwl specific caching.
+# OMG I LOVE THIS!!! iz so eeee zzzz
+class OpenClassIntegration(OpenClass):
+	# Cache keys
+	AUTH_TOKEN_CACHE_KEY    = 'openclass_authentication_token'
+	REFRESH_TOKEN_CACHE_KEY = 'openclass_refresh_token'
+
+	def __init__(
+		self,
+		admin_email = OPENCLASS_ADMIN_EMAIL,
+	 	admin_pw    = OPENCLASS_ADMIN_PASSWORD,
+		api_key     = OPENCLASS_API_KEY,
+		debug 	    = False
+	):
+		if not cache.has_key(self.AUTH_TOKEN_CACHE_KEY) or not cache.has_key(self.REFRESH_TOKEN_CACHE_KEY):
+			oc_api = OpenClassAPI(admin_email, admin_pw, api_key)
+
+			# Now set the items in the cache. Yay!!!!
+			cache.set(self.AUTH_TOKEN_CACHE_KEY,    oc_api.auth_token)
+			cache.set(self.REFRESH_TOKEN_CACHE_KEY, oc_api.refresh_token)
+
+		super(OpenClassIntegration, self).__init__(
+			admin_email,
+			admin_pw,
+			api_key,
+			cache.get(self.AUTH_TOKEN_CACHE_KEY),
+			cache.get(self.REFRESH_TOKEN_CACHE_KEY),
+			debug
+		)
+
+	# Reset the cache when we refresh
+	def refresh_auth_tokens(self):
+		super(OpenClassIntegration, self).refresh_auth_tokens()
+
+		cache.set(self.AUTH_TOKEN_CACHE_KEY,    self.auth_token)
+		cache.set(self.REFRESH_TOKEN_CACHE_KEY, self.refresh_token)
+
+
+
+
