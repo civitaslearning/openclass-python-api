@@ -29,7 +29,7 @@ Basic Example
 ---
 
 ```
->>> from pearson.openclass import OpenClass
+>>> from openclass.core import OpenClass
 >>> oc = OpenClass('sam@classowl.com', 'password', 'oc_api_key')
 >>> course = oc.get_course('oc_course_key')
 >>> course['name']
@@ -57,7 +57,7 @@ OPENCLASS_INSTITUTION_ID: string of the OpenClass school you're creating a cours
 ```
 # Import the OpenClass library
 
-from pearson.openclass import OpenClass
+from openclass.core import OpenClass
 
 # ========================================================
 # Create a connection with OpenClass (valid throughout)
