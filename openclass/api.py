@@ -75,36 +75,10 @@ class OpenClassAPI(object):
         Returns: None
     """
     def set_auth_tokens(self, admin_email, admin_pw):
-        tokens = self.get_auth_tokens(admin_email, admin_pw)
+        tokens = self.get_new_auth_tokens(admin_email, admin_pw)
 
         self.auth_token    = tokens['auth_token']
         self.refresh_token = tokens['refresh_token']
-
-    """
-        get_auth_tokens
-
-        Purpose: gets an auth token from OpenClass in order to make valid requests to their API
-
-        Returns: {'auth_token': <auth_token>, 'refresh_token': <refresh_token>}
-
-        Required parameters:
-            - admin_email: email address of OpenClass admin
-            - admin_pw:    password of OpenClass admin
-    """
-    def get_auth_tokens(self, admin_email, admin_pw):
-        url = '{}?apiKey={}'.format(self.IDENTITY_URL, self.api_key)
-
-        payload = {'email': admin_email, 'password': admin_pw}
-        headers = {'content-type': 'application/x-www-form-urlencoded'}
-
-        r           = requests.post(url, data = payload, headers = headers)
-        status_code = r.status_code
-
-        # http status code != 200? raise an error!
-        r.raise_for_status()
-        data = r.json()['data']
-
-        return {'auth_token': data['authToken'], 'refresh_token': data['refreshToken']}
 
     """
         refresh_auth_tokens
@@ -120,6 +94,32 @@ class OpenClassAPI(object):
 
         self.auth_token    = tokens['auth_token']
         self.refresh_token = tokens['refresh_token']
+
+    """
+        get_new_auth_tokens
+
+        Purpose: gets a new auth token from OpenClass in order to make valid requests to their API
+
+        Returns: {'auth_token': <auth_token>, 'refresh_token': <refresh_token>}
+
+        Required parameters:
+            - admin_email: email address of OpenClass admin
+            - admin_pw:    password of OpenClass admin
+    """
+    def get_new_auth_tokens(self, admin_email, admin_pw):
+        url = '{}?apiKey={}'.format(self.IDENTITY_URL, self.api_key)
+
+        payload = {'email': admin_email, 'password': admin_pw}
+        headers = {'content-type': 'application/x-www-form-urlencoded'}
+
+        r           = requests.post(url, data = payload, headers = headers)
+        status_code = r.status_code
+
+        # http status code != 200? raise an error!
+        r.raise_for_status()
+        data = r.json()['data']
+
+        return {'auth_token': data['authToken'], 'refresh_token': data['refreshToken']}
 
     """
         get_refreshed_auth_tokens
